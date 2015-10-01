@@ -8,7 +8,7 @@ var bio = {
 		"location": "Naperville, IL"
 	},
 	"welcomeMessage": "Welcome! Please take a moment and enjoy learning a little bit about me.",
-	"skills": ["Articulate", "Big Thinker", "Creative", "Detail-Orientated"],
+	"skills": ["HTML/CSS/Javascript", "Java", "SQL", "Still Learning"],
 	"bioPic": "images/me.jpg"
 
 
@@ -180,11 +180,16 @@ education.displaySchool();
 var projects = {
 	"projects": [
 	{
-		"title": "Portfolio",
+		"title": "http://www.kevinbudd.com\"\>Portfolio",
 		"dates": "September 2015",
 		"description": "Online portfolio featuring ongoing work for Front End Developer Nanodegree",
 		"images": ["http://kevinbudd.com/img/park.jpg", "http://kevinbudd.com/img/reflection.jpg"]
-
+	},
+	{
+		"title": "http://students.thatlink.com/Student11//Project5.aspx\"\>Coffee Cupping Database",
+		"dates": "May 2015",
+		"description": "SQL Database storing results of coffee cupping with visual graphs represeting results",
+		"images": ["images/coffee_front.jpg", "images/coffee_graph.jpg"]
 	}
 	]
 };
