@@ -51,6 +51,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
+
   <div id="main">
     <!--
     Everything from here to the <script> tag below is the skeleton of your
@@ -60,12 +61,27 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     -->
     <div id="header" class="center-content clear-fix">
       <ul id="topContacts" class="flex-box"></ul>
+      <a id="menu" class="header__menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
+          </svg>
+        </a>
     </div>
+
+    <nav id="drawer" class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="http://www.kevinbudd.com">Portfolio</a></li>
+        <li class="nav__item"><a href="#workExperience">Work</a></li>
+        <li class="nav__item"><a href="#projects">Projects</a></li>
+        <li class="nav__item"><a href="#education">Education</a></li>
+      </ul>
+    </nav>
+
     <div style="clear: both;"></div>
     <div id="workExperience" class="gray">
       <h2>Work Experience</h2>
     </div>
-    <div id="projects">
+    <div id="projects" class="soft-purple">
       <h2>Projects</h2>
     </div>
     <div id="education" class="gray">
@@ -74,8 +90,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
     </div>
-    <div id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
+    <div id="lets-connect" class="blueish">
+      <h2 class="gray center-text">Let's Connect</h2>
         <ul id="footerContacts" class="flex-box">
       </ul>
     </div>
@@ -110,6 +126,18 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     /*
         an opening and closing set of slash asterisks for block comments.
     */
+    var menu = document.querySelector('#menu');
+    var main = document.querySelector('main');
+    var drawer = document.querySelector('.nav');
+
+    menu.addEventListener('click', function(e) {
+        drawer.classList.toggle('open');
+        e.stopPropagation();
+    });
+    main.addEventListener('click', function() {
+        drawer.classList.remove('open');
+    });
+
 
 
     if(document.getElementsByClassName('flex-item').length === 0) {
@@ -133,6 +161,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     if(document.getElementById('map') === null) {
       document.getElementById('mapDiv').style.backgroundColor = 'black';
     }
+
+
   </script>
 </body>
 </html>

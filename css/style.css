@@ -14,6 +14,10 @@ h6 {
   font-family: "Roboto", sans-serif;
 }
 
+.header__menu {
+  display: none;
+}
+
 .clear-fix {
   overflow: auto;
 }
@@ -26,7 +30,7 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #655560;
   line-height: 48px;
   display: inline;
 }
@@ -34,7 +38,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: #655560;
   line-height: 29px;
   padding: 10px;
 }
@@ -59,6 +63,38 @@ h4,
 h5 {
   padding:10px 5%;
 
+}
+
+.nav {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav__list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__item {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #616161;
+  padding: 1.5em;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+  color: #212121;
 }
 
 
@@ -100,7 +136,7 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #655560;
   display: none;
 }
 
@@ -108,8 +144,8 @@ a {
   background-color: #f5ae23;
 }
 
-.orange-text {
-  color: #f5ae23;
+.purple-text {
+  color: #655560;
 }
 
 .white-text {
@@ -118,18 +154,26 @@ a {
 }
 
 .gray {
-  background-color: #f3f3f3;
+  background-color: #f1f2f3;
   padding-bottom: 10px;
   clear:both;
+}
+
+.blueish {
+  background-color: #7ea2aa;
 }
 
 .dark-gray {
   background-color: #4a4a4a;
 }
 
+.soft-purple {
+  background-color: #fcf7ff
+}
+
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #7ea2aa;
 }
 
 .flex-box {
@@ -215,4 +259,39 @@ span {
   .biopic {
     display: block;
   }
+}
+
+@media screen and (max-width: 549px) {
+   .nav {
+    z-index: 10;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+  }
+  .nav.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  .nav__item {
+    display: list-item;
+    border-bottom: 1px solid #E0E0E0;
+    width: 100%;
+    text-align: left;
+  }
+  .header__menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+  .header__menu svg {
+    width: 32px;
+    fill: #E0E0E0;
+  }
+
 }
