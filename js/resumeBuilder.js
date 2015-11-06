@@ -90,6 +90,7 @@ work.display();
 // education info
 var education = {
     'schools': [{
+        'nameUrl': 'http://dupage.edu',
         'name': 'College of DuPage',
         'location': 'Glen Ellyn, IL',
         'degree': 'Certificate',
@@ -97,6 +98,7 @@ var education = {
         'dates': '2014-2015',
         'url': 'http://cod.edu'
     }, {
+        'nameUrl': 'http://depaul.edu',
         'name': 'DePaul University',
         'location': 'Chicago, IL',
         'degree': 'BS',
@@ -137,14 +139,17 @@ education.displaySchool = function() {
     education.schools.forEach(function(school) {
         $('#education').append(HTMLschoolStart);
 
+        var formattedUrl = HTMLschoolNameUrl.replace('%data%', school.nameUrl);
+        $('.education-entry:last').append(formattedUrl);
+
         var formattedName = HTMLschoolName.replace('%data%', school.name);
         $('.education-entry:last').append(formattedName);
 
         var formattedDegreee = HTMLschoolDegree.replace('%data%', school.degree);
         $('.education-entry:last').append(formattedDegreee);
 
-        var formattedDates = HTMLschoolDates.replace('%data%', school.dates);
-        $('.education-entry:last').append(formattedDates);
+        //var formattedDates = HTMLschoolDates.replace('%data%', school.dates);
+        //$('.education-entry:last').append(formattedDates);
 
         school.focus.forEach(function(major) {
             var formattedFocus = HTMLschoolMajor.replace('%data%', major);
@@ -218,15 +223,15 @@ projects.display = function() {
 projects.display();
 
 //function to uppercase last name and capatalize first name
-function inName(name) {
-    name = name.trim().split(' ');
+function inName() {
+    name = bio.name.trim().split(' ');
     console.log(name);
-    name[1] = name[1].toUpperCase();
-    name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
+    var lastName = name[1].toUpperCase();
+    var firstName = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 
-    name = $('#name').text();
+    var newName = firstName + " " +lastName;
 
-    return name;
+    return newName;
 }
 
 // display internationalize button
