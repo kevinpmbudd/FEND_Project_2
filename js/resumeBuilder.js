@@ -3,24 +3,118 @@
   */
 
 // Bio information
-var bio = {
-    'name': 'Kevin Budd',
-    'role': 'Web Developer',
-    'contacts': {
-        'mobile': '630-373-9596',
-        'email': 'kevin@kevinbudd.com',
-        'github': 'kevinpmbudd',
-        'location': 'Naperville, IL'
+
+//=============== Model ===================\\
+
+var model = {
+
+    bio: {
+        'name': 'Kevin Budd',
+        'role': 'Web Developer',
+        'contacts': {
+            'mobile': '630-373-9596',
+            'email': 'kevin@kevinbudd.com',
+            'github': 'kevinpmbudd',
+            'location': 'Naperville, IL'
+        },
+        'welcomeMessage': 'Welcome! Please take a moment and enjoy learning a little bit about me.',
+        'skills': ['HTML/CSS/Javascript', 'Java', 'SQL', 'Still Learning'],
+        'bioPic': 'images/me.jpg'
     },
-    'welcomeMessage': 'Welcome! Please take a moment and enjoy learning a little bit about me.',
-    'skills': ['HTML/CSS/Javascript', 'Java', 'SQL', 'Still Learning'],
-    'bioPic': 'images/me.jpg'
+
+    work: {
+        'jobs': [{
+            'employer': 'Trace-it Systems',
+            'title': 'Web Developer Intern',
+            'location': 'Naperville, IL',
+            'dates': 'Summer 2015',
+            'description': 'Worked on a Cordova cross platform mobile app for Android and iOS. Analyzed and Debugged the app. Created Documentation for work done and future work on project'
+        }, {
+            'employer': 'Freelance',
+            'title': 'Yoga Teacher',
+            'location': 'Naperville, IL',
+            'dates': '2010-2014',
+            'description': 'Taught weekly classes, workshops and teacher trainings. Maintained website for promoting my teaching.'
+        }]
+    },
+
+    education: {
+        'schools': [{
+            'nameUrl': 'http://dupage.edu',
+            'name': 'College of DuPage',
+            'location': 'Glen Ellyn, IL',
+            'degree': 'Certificate',
+            'focus': ['Web & Software Development'],
+            'dates': '2014-2015',
+            'url': 'http://cod.edu'
+        }, {
+            'nameUrl': 'http://depaul.edu',
+            'name': 'DePaul University',
+            'location': 'Chicago, IL',
+            'degree': 'BS',
+            'focus': ['Human-Computer Interaction'],
+            'dates': '2001-2005',
+            'url': 'http://depaul.edu'
+        }],
+        'onlineCourses': [{
+            'title': 'Front End Developer Nanodegree',
+            'school': 'Udacity',
+            'dates': '2015',
+            'url': 'http://udacity.com'
+
+        }, {
+            'title': 'Responsive Web Design Fundamentals',
+            'school': 'Udacity',
+            'dates': '2015',
+            'url': 'http://udacity.com'
+        }, {
+            'title': 'Responsive Images',
+            'school': 'Udacity',
+            'dates': '2015',
+            'url': 'http://udacity.com'
+        }, {
+            'title': 'Javascript Basics',
+            'school': 'Udacity',
+            'dates': '2015',
+            'url': 'http://udacity.com'
+        }
+
+        ]
+    },
+
+    projects: {
+        'projects': [{
+            'title': 'http://www.kevinbudd.com\'\>Portfolio',
+            'dates': 'September 2015',
+            'description': 'Online portfolio featuring ongoing work for Front End Developer Nanodegree',
+            'images': ['http://kevinbudd.com/img/park.jpg', 'http://kevinbudd.com/img/reflection.jpg']
+        }, {
+            'title': 'http://students.thatlink.com/Student11//Project5.aspx\'\>Coffee Cupping Database',
+            'dates': 'May 2015',
+            'description': 'SQL Database storing results of coffee cupping with visual graphs represeting results',
+            'images': ['images/coffee_front.jpg', 'images/coffee_graph.jpg']
+        }]
+    }
+
 };
 
-// function to display bio info
-bio.display = function() {
+//=============== View ===================\\
 
-    'use strict';
+var view = {
+    init: function() {
+
+
+        this.render();
+    },
+    render: function() {
+
+        var bio = octopus.bioObj,
+            work = octopus.workObj,
+            education = octopus.educationObj,
+            projects = octopus.projectsObj;
+            console.log(bio);
+
+    // 'use strict';
     var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
     var formattedName = HTMLheaderName.replace('%data%', bio.name);
     var formattedMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
@@ -46,31 +140,7 @@ bio.display = function() {
             $('#skills:last').append(formatedskills);
         });
     }
-};
 
-bio.display();
-
-// work information
-var work = {
-    'jobs': [{
-        'employer': 'Trace-it Systems',
-        'title': 'Web Developer Intern',
-        'location': 'Naperville, IL',
-        'dates': 'Summer 2015',
-        'description': 'Worked on a Cordova cross platform mobile app for Android and iOS. Analyzed and Debugged the app. Created Documentation for work done and future work on project'
-    }, {
-        'employer': 'Freelance',
-        'title': 'Yoga Teacher',
-        'location': 'Naperville, IL',
-        'dates': '2010-2014',
-        'description': 'Taught weekly classes, workshops and teacher trainings. Maintained website for promoting my teaching.'
-    }]
-};
-
-// function to display work info
-work.display = function() {
-
-    'use strict';
     work.jobs.forEach(function(job) {
         $('#workExperience').append(HTMLworkStart);
 
@@ -83,59 +153,6 @@ work.display = function() {
         $('.work-entry:last').append(formattedWorkExperience);
     });
 
-};
-
-work.display();
-
-// education info
-var education = {
-    'schools': [{
-        'nameUrl': 'http://dupage.edu',
-        'name': 'College of DuPage',
-        'location': 'Glen Ellyn, IL',
-        'degree': 'Certificate',
-        'focus': ['Web & Software Development'],
-        'dates': '2014-2015',
-        'url': 'http://cod.edu'
-    }, {
-        'nameUrl': 'http://depaul.edu',
-        'name': 'DePaul University',
-        'location': 'Chicago, IL',
-        'degree': 'BS',
-        'focus': ['Human-Computer Interaction'],
-        'dates': '2001-2005',
-        'url': 'http://depaul.edu'
-    }],
-    'onlineCourses': [{
-            'title': 'Front End Developer Nanodegree',
-            'school': 'Udacity',
-            'dates': '2015',
-            'url': 'http://udacity.com'
-
-        }, {
-            'title': 'Responsive Web Design Fundamentals',
-            'school': 'Udacity',
-            'dates': '2015',
-            'url': 'http://udacity.com'
-        }, {
-            'title': 'Responsive Images',
-            'school': 'Udacity',
-            'dates': '2015',
-            'url': 'http://udacity.com'
-        }, {
-            'title': 'Javascript Basics',
-            'school': 'Udacity',
-            'dates': '2015',
-            'url': 'http://udacity.com'
-        }
-
-    ]
-};
-
-// function to display education info
-education.displaySchool = function() {
-
-    'use strict';
     education.schools.forEach(function(school) {
         $('#education').append(HTMLschoolStart);
 
@@ -147,9 +164,6 @@ education.displaySchool = function() {
 
         var formattedDegreee = HTMLschoolDegree.replace('%data%', school.degree);
         $('.education-entry:last').append(formattedDegreee);
-
-        //var formattedDates = HTMLschoolDates.replace('%data%', school.dates);
-        //$('.education-entry:last').append(formattedDates);
 
         school.focus.forEach(function(major) {
             var formattedFocus = HTMLschoolMajor.replace('%data%', major);
@@ -176,29 +190,7 @@ education.displaySchool = function() {
         var formattedURL = HTMLonlineURL.replace('%data%', course.url);
         $('.education-entry:last').append(formattedURL);
     });
-};
 
-education.displaySchool();
-
-// project info
-var projects = {
-    'projects': [{
-        'title': 'http://www.kevinbudd.com\'\>Portfolio',
-        'dates': 'September 2015',
-        'description': 'Online portfolio featuring ongoing work for Front End Developer Nanodegree',
-        'images': ['http://kevinbudd.com/img/park.jpg', 'http://kevinbudd.com/img/reflection.jpg']
-    }, {
-        'title': 'http://students.thatlink.com/Student11//Project5.aspx\'\>Coffee Cupping Database',
-        'dates': 'May 2015',
-        'description': 'SQL Database storing results of coffee cupping with visual graphs represeting results',
-        'images': ['images/coffee_front.jpg', 'images/coffee_graph.jpg']
-    }]
-};
-
-// function to display project info
-projects.display = function() {
-
-    'use strict';
     projects.projects.forEach(function(project) {
         $('#projects').append(HTMLprojectStart);
 
@@ -218,18 +210,38 @@ projects.display = function() {
             });
         }
     });
+
+    }
+
 };
 
-projects.display();
+//============== Octopus ==================\\
+
+var octopus = {
+    init: function() {
+            this.bioObj = model.bio,
+            this.workObj = model.work,
+            this.educationObj = model.education,
+            this.projectsObj = model.projects;
+
+        view.init();
+
+        console.log(this.bioObj);
+
+    }
+};
+
+octopus.init();
 
 //function to uppercase last name and capatalize first name
 function inName() {
-    name = bio.name.trim().split(' ');
+    var name = [];
+    name = octopus.bioObj.name.trim().split(' ');
     console.log(name);
     var lastName = name[1].toUpperCase();
     var firstName = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
 
-    var newName = firstName + " " +lastName;
+    var newName = firstName + " " + lastName;
 
     return newName;
 }
@@ -237,5 +249,5 @@ function inName() {
 // display internationalize button
 $('#main').append(internationalizeButton);
 
-// display good map
+// display google map
 $('#mapDiv').append(googleMap);
